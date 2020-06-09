@@ -98,6 +98,20 @@ describe("convertType", () => {
         isAtomic: true
       });
     });
+
+    it("correctly passes through x-qualified-classname", () => {
+      swaggerType = makeSwaggerType({
+        type: "string",
+        "x-qualified-classname": "x.qualified.test.classname"
+      });
+
+      expect(convertType(swaggerType, swagger)).toEqual({
+        ...emptyTypeSpecWithDefaults,
+        tsType: "string",
+        isAtomic: true,
+        crl8QualifiedClassname: "x.qualified.test.classname"
+      });
+    });
   });
 
   describe("number", () => {

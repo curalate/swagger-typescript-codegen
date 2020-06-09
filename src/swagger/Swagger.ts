@@ -24,6 +24,7 @@ export interface SwaggerType {
     readonly [index: string]: SwaggerType;
   };
   readonly additionalProperties?: boolean | SwaggerType;
+  readonly "x-qualified-classname"?: string;
 }
 
 export interface SwaggerArray extends SwaggerType {
