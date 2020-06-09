@@ -17,6 +17,7 @@ export interface TypeSpec {
   readonly properties: ReadonlyArray<TypeSpec> | undefined;
   readonly hasAdditionalProperties: boolean;
   readonly additionalPropertiesType: TypeSpec | undefined;
+  readonly crl8QualifiedClassname?: string;
 }
 
 export function makeTypeSpecFromSwaggerType(
@@ -36,6 +37,7 @@ export function makeTypeSpecFromSwaggerType(
     target: undefined,
     properties: undefined,
     hasAdditionalProperties: false,
-    additionalPropertiesType: undefined
+    additionalPropertiesType: undefined,
+    crl8QualifiedClassname: swaggerType["x-qualified-classname"]
   };
 }
