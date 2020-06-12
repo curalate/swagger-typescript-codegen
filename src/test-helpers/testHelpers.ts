@@ -46,6 +46,7 @@ export function makeEmptyTypeSpec(): TypeSpec {
     target: undefined,
     properties: undefined,
     hasAdditionalProperties: false,
-    additionalPropertiesType: undefined
+    additionalPropertiesType: undefined,
+    isTinyType: false
   };
 }
