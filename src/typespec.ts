@@ -18,12 +18,19 @@ export interface TypeSpec {
   readonly hasAdditionalProperties: boolean;
   readonly additionalPropertiesType: TypeSpec | undefined;
   readonly crl8QualifiedClassname?: string;
+  readonly crl8FullyQualifiedClassname?: string;
   readonly isTinyType: boolean;
 }
 
 export function makeTypeSpecFromSwaggerType(
   swaggerType: SwaggerType
 ): Readonly<TypeSpec> {
+  const qualifiedClassnameParts = swaggerType["x-qualified-classname"]?.split(
+    "."
+  );
+  const crl8QualifiedClassname =
+    qualifiedClassnameParts?.[qualifiedClassnameParts?.length - 1];
+
   return {
     name: undefined,
     description: swaggerType.description,
@@ -39,7 +46,8 @@ export function makeTypeSpecFromSwaggerType(
     properties: undefined,
     hasAdditionalProperties: false,
     additionalPropertiesType: undefined,
-    crl8QualifiedClassname: swaggerType["x-qualified-classname"],
+    crl8QualifiedClassname,
+    crl8FullyQualifiedClassname: swaggerType["x-qualified-classname"],
     isTinyType: !!swaggerType["x-qualified-classname"]
   };
 }
