@@ -109,7 +109,9 @@ describe("convertType", () => {
         ...emptyTypeSpecWithDefaults,
         tsType: "string",
         isAtomic: true,
-        crl8QualifiedClassname: "x.qualified.test.classname"
+        isTinyType: true,
+        crl8FullyQualifiedClassname: "x.qualified.test.classname",
+        crl8QualifiedClassname: "classname"
       });
     });
   });
